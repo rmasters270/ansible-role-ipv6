@@ -1,0 +1,17 @@
+galaxy_info:
+  author: Ryan Masters
+  namespace: rmasters270
+  role_name: ipv6
+  description: Enable or disable IPv6 in grub
+  company: none
+  license: MIT
+  min_ansible_version: 2.1
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - Focal
+
+  galaxy_tags: [network, ipv6, ubuntu, grub]
+
+dependencies: []

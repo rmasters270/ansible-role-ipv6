@@ -1,0 +1,22 @@
+---
+
+- name: Disable ipv6 in grub
+  ansible.builtin.replace:
+    path: /etc/default/grub
+    regexp: '^(GRUB_CMDLINE_LINUX="(?:(?!\s?{{ option | regex_escape }}=).)*)(?:\s?{{ option | regex_escape }}=\S+)?(.*")$'
+    replace: '\g<1> {{ option }}={{ value }}\g<2>'
+  vars:
+    option: ipv6.disable
+    value: 1
+  notify: update grub
+  when: not ipv6_enabled
+
+- name: Enable ipv6 in grub
+  ansible.builtin.replace:
+    path: /etc/default/grub
+    regexp: '^(GRUB_CMDLINE_LINUX="(?:(?!\s?{{ option | regex_escape }}=).)*)(?:\s?{{ option | regex_escape }}=\S+)?(.*")$'
+    replace: '\g<1>\g<2>'
+  vars:
+    option: ipv6.disable
+  notify: update grub
+  when: ipv6_enabled

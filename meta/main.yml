@@ -1,5 +1,6 @@
 galaxy_info:
   author: rmasters270
+  role_name: ipv6
   description: Enable or disable IPv6 in grub
   company: none
   license: MIT

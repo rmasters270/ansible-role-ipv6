@@ -1,38 +1,40 @@
-Role Name
-=========
+# IPv6
 
-A brief description of the role goes here.
+Enable or disable IPv6 in the GRUB boot loader. This will disable IPv6 system wide but changes require a reboot to be effective.
 
-Requirements
-------------
+## Role Variables
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+### ipv6_enabled
 
-Role Variables
---------------
+Enable or disable IPv6.
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+default: `true`
 
-Dependencies
-------------
+### grub_change_reboot
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Reboot the target machine immediately when grub is updated.  If set to `false`  IPv6 will remain unchanged until the next reboot.
 
-Example Playbook
-----------------
+default: `true`
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+## Example Playbook
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+Disable IPv6 on all servers.
 
-License
--------
+```yaml
+- hosts: servers
+  become: true
 
-BSD
+  vars:
+    ipv6_enabled: false
 
-Author Information
-------------------
+  roles:
+    - rmasters270.ipv6
+```
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+## License
+
+MIT
+
+## Author Information
+
+Ryan Masters

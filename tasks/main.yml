@@ -20,3 +20,7 @@
     option: ipv6.disable
   notify: update grub
   when: ipv6_enabled
+
+- name: force reboot immediately
+  ansible.builtin.include_tasks: force_reboot.yml
+  when: grub_change_reboot

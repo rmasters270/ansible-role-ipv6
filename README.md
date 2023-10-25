@@ -2,7 +2,7 @@
 
 Enable or disable IPv6 in the GRUB boot loader. This will disable IPv6 system wide but changes require a reboot to be effective.
 
-[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-ipv6-blue.svg)](https://galaxy.ansible.com/rmasters270/ipv6)
+[![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-ipv6-blue.svg)](https://galaxy.ansible.com/ui/standalone/roles/rmasters270/ipv6)
 
 ## Role Variables
 

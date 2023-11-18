@@ -1,4 +1,4 @@
 ---
 
-- name: update grub
+- name: Update grub
   ansible.builtin.include_tasks: update_grub.yml

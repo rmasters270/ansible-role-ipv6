@@ -1,5 +1,10 @@
 ---
 
+- name: Check if grub is exists
+  ansible.builtin.stat:
+    path: /etc/default/grub
+  register: grub_file
+
 - name: Disable ipv6 in grub
   ansible.builtin.replace:
     path: /etc/default/grub
@@ -9,7 +14,9 @@
     option: ipv6.disable
     value: 1
   notify: update grub
-  when: not ipv6_enabled
+  when:
+    - not ipv6_enabled
+    - grub_file.stat.exists
 
 - name: Enable ipv6 in grub
   ansible.builtin.replace:
@@ -19,7 +26,9 @@
   vars:
     option: ipv6.disable
   notify: update grub
-  when: ipv6_enabled
+  when:
+    - ipv6_enabled
+    - grub_file.stat.exists
 
 - name: Force reboot immediately
   ansible.builtin.include_tasks: force_reboot.yml
